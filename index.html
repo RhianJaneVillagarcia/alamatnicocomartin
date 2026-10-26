@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Titus Cardeño: The Coco Martin Legend</title>
+<style>
+:root{--g:#f5c542;--r:#b3122a;--k:#080405}
+*{box-sizing:border-box}
+body{margin:0;background:var(--k);color:#f6ecd2;font:18px/1.45 Georgia,serif;min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% -10%,rgba(245,197,66,.28),transparent 60%),radial-gradient(circle at 90% 100%,rgba(179,18,42,.35),transparent 50%)}
+#bg,#fx{position:fixed;inset:0;z-index:0}#fx{z-index:50;pointer-events:none}
+#hud{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:10px 18px;font-family:Impact,'Arial Narrow',sans-serif;letter-spacing:.08em;color:var(--g)}
+#mu{background:none;border:2px solid var(--g);color:var(--g);border-radius:8px;font-size:1.1rem;padding:2px 10px;cursor:pointer}
+#stage{position:relative;z-index:2;max-width:880px;margin:0 auto;padding:12px 18px 40px;transition:opacity .25s,transform .25s}
+#stage.out{opacity:0;transform:scale(.97)}
+h1,h2,h3,.d,.react,.vsb{font-family:Impact,'Arial Narrow',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.04em}
+h1{font-size:clamp(2.2rem,8vw,4.6rem);margin:.2em 0;line-height:.98;color:var(--g);text-shadow:0 0 30px rgba(245,197,66,.5),3px 3px 0 var(--r)}
+h2{font-size:clamp(1.4rem,4.5vw,2.2rem);margin:.4em 0;color:var(--g)}
+.c{text-align:center}.sm{font-size:.85rem;opacity:.75}.big{font-size:1.3rem}.tag{letter-spacing:.12em;font-size:.95rem}
+.rev{animation:rev 1.2s steps(24) both}
+.av{width:min(220px,50vw);margin:8px auto;animation:float 3s ease-in-out infinite}.av svg,.av img{width:100%;border-radius:50%;display:block}
+.btn{font-family:Impact,'Arial Narrow',sans-serif;font-size:1.25rem;letter-spacing:.08em;padding:.65em 1.5em;margin:.3em;color:#1a0b0e;background:linear-gradient(var(--g),#c9941a);border:0;border-radius:6px;cursor:pointer;box-shadow:0 0 18px rgba(245,197,66,.45);transition:.15s}
+.btn:hover:not(:disabled){transform:translateY(-2px) scale(1.04)}.btn:active{transform:scale(.97)}.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.big{animation:pulse 1.6s infinite}.btn.alt{background:transparent;color:var(--g);border:2px solid var(--g);box-shadow:none}
+:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{padding:16px;border:2px solid #5a2a2f;background:rgba(26,11,14,.85);border-radius:10px;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:.15s}
+.card:hover:not(:disabled){border-color:var(--g);transform:translateY(-3px)}
+.card.ok{border-color:#3ddc84;background:#12341f}.card.no{border-color:#ff4d5e;background:#3a1016;animation:shake .4s}
+.bar{height:12px;background:#2a1418;border-radius:8px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--r),var(--g));transition:width .4s}
+.box{background:rgba(26,11,14,.85);border:2px solid var(--g);border-radius:10px;padding:14px 16px;margin:12px 0}
+.react{height:240px;margin:10px 0;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:12px;border:3px solid var(--g);background:#1a0b0e;font-size:clamp(1.8rem,7vw,3.4rem);cursor:pointer;user-select:none;touch-action:manipulation}
+.react.go{background:var(--r);color:#fff;animation:pulse .3s infinite}.react.ok{background:#12341f}.react.bad{background:#3a1016}
+.meter{position:relative;height:40px;background:#2a1418;border-radius:8px;margin:20px 0;cursor:pointer}
+.meter u{position:absolute;left:44%;width:12%;height:100%;background:rgba(245,197,66,.55)}
+.meter b{position:absolute;top:-4px;height:48px;width:3%;background:#fff;border-radius:3px}
+.mt{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:center;font-family:Impact,sans-serif;color:var(--g)}
+.vs{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}.vsb{font-size:2.4rem;color:var(--r);animation:pulse 1s infinite}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#pc{width:100%;max-width:340px;height:auto;margin:auto;border:2px solid var(--g)}
+label{display:block;margin:6px 0;font-size:.9rem}
+input,select{width:100%;padding:8px;background:#0e0608;color:#fff;border:1px solid #5a2a2f;border-radius:6px;font:inherit}
+.ach{list-style:none;padding:0;text-align:left}.ach li{padding:4px 0}.ach .lock{opacity:.4}
+.shake{animation:shake .5s}
+.badge{display:inline-block;background:var(--r);color:#fff;padding:4px 14px;border-radius:20px;font-family:Impact,sans-serif;letter-spacing:.06em;animation:pulse 1.6s infinite}
+@keyframes shake{20%{transform:translate(-8px,4px)}40%{transform:translate(8px,-4px)}60%{transform:translate(-6px,-3px)}80%{transform:translate(6px,3px)}}
+@keyframes pulse{50%{box-shadow:0 0 34px rgba(245,197,66,.95)}}
+@keyframes float{50%{transform:translateY(-8px)}}
+@keyframes rev{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+@media(max-width:700px){.opts,.pg{grid-template-columns:1fr}.vs{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head>
+<body>
+<canvas id="bg"></canvas><canvas id="fx"></canvas>
+<header id="hud"><span>SCORE <b id="sc">0</b></span><span id="lvl"></span><button id="mu" aria-label="Toggle sound" aria-pressed="false">🔊</button></header>
+<main id="stage" tabindex="-1"></main>
+<script>
+/* ===== EDIT HERE: all jokes, questions and labels live in CFG (fictional classroom content only) ===== */
+const CFG={
+ title:'TITUS CARDEÑO',sub:'THE COCO MARTIN LEGEND',
+ tag:'ONE CLASSMATE. ONE LEGENDARY CLAIM. INFINITE CONFIDENCE.',
+ photo:'', // e.g. 'assets/titus.jpg' (only with Titus's permission). Empty = drawn placeholder.
+ intro:[['Narrator','From Manila to Mars, from the tallest mountain to the deepest ocean, the whole world knows one legendary claim…'],
+  ['Narrator','Translators in every language have tried to explain it. Even the pigeons know.'],
+  ['Titus','Alam mo, kamukha ko talaga si Coco Martin.'],['Narrator','And the entire planet gasped.']],
+ mission:'YOUR MISSION: LIVE UP TO WORLDWIDE MAIN CHARACTER ENERGY.',
+ quiz:[
+  {q:"What is Titus's most legendary classroom claim?",a:['He can finish all his homework in one second.','He looks like Coco Martin.','He is secretly a professional game developer.','He can pause time during exams.'],c:1,e:'Correct! The claim is the whole premise of this game.'},
+  {q:'How many countries know about the claim?',a:['Just our classroom','Every country, plus a few clouds','Only Antarctica','Zero. It is a secret.'],c:1,e:'In this parody, absolutely everyone knows. The pigeons too.'},
+  {q:'What is the key ingredient of the legendary claim?',a:['Math homework','Unshakeable confidence','A Wi-Fi password','Extra baon'],c:1,e:'Confidence! It is the only resource that never runs out.'},
+  {q:'Who has officially confirmed the resemblance?',a:['Hollywood','The United Nations','NASA','Nobody. It is a classroom joke.'],c:3,e:'Right. Nobody has confirmed anything. Yet.'},
+  {q:'What must the player prove to the whole world?',a:['Main character energy','They can nap through Math','They know every WiFi cafe','Nothing, just vibes'],c:0,e:'Main character energy. Stay focused, hero.'}],
+ boss:[
+  {q:'Complete the legendary line: "Alam mo, kamukha ko talaga si ____."',a:['Coco Martin','Our teacher','The Wi-Fi router','Batman'],c:0,e:'Say it with full teleserye drama.'},
+  {q:'How many times has Hollywood confirmed the claim?',a:['Zero. Still unconfirmed.','One thousand','Twice, by phone','NASA confirmed it'],c:0,e:'Hollywood has not confirmed anything.'}],
+ poster:{title:'The Kamukha Chronicles',sub:'A Classroom Legend Story',tag:'He says he looks like him. The class says: sige na nga.'},
+ credits:'Game by YOUR NAME, Senior High School Computer Programming. Starring a very confident classmate. All characters, ranks and achievements are fictional and made for fun.'
+};
+const THEMES=[{n:'The Action Hero',a:'#3a0a0a',b:'#000',c:'#f5c542'},{n:'The Heartbreak King',a:'#4a1030',b:'#0d0310',c:'#ff8fa3'},{n:'The Classroom Legend',a:'#10304a',b:'#050a14',c:'#f5c542'},{n:'The Ultimate Coco Martin Impersonator',a:'#5a3a05',b:'#0a0503',c:'#ffe08a'}];
+const RANKS=[[0,'Rookie Extra'],[600,'Rising Star'],[1100,'Teleserye Specialist'],[1600,'Main Character'],[1900,'Coco Martin-Level Confidence']];
+const ACH={perfect:['Perfect Quiz','Every Level 1 answer correct'],reflex:['Lightning Reflexes','A reaction under 300 ms'],clean:['No False Starts','Zero early clicks in Level 2'],poster:['Poster Director','Generated your poster'],surge:['Energy Surge','25+ taps in the Confidence Charge'],legend:['Classroom Legend','Won the final challenge']};
+const CARDS={1:['LEVEL 1','The Confidence Test','Answer 5 questions. +100 per correct answer, -25 per wrong one. Keys 1-4 also work.'],
+ 2:['LEVEL 2','Survive the Teleserye','Wait for DRAMATIC MOMENT! then click or press Space. Too early costs -50. Faster means more points. Three rounds, shrinking time window.'],
+ 3:['LEVEL 3','Build Your Own Teleserye Poster','Design your own teleserye poster. Generate it for +100 and download the image.'],
+ 4:['FINAL BOSS','The Ultimate Coco Martin Challenge','Three challenges: a timed quiz, a dramatic entrance, and a confidence charge.']};
+/* ===== engine ===== */
+const $=s=>document.querySelector(s),stage=$('#stage');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let S,TM=[],raf=0,cur='',busy=false,Q,R,M,H,TY,ci=0,AC,mute=false;
+const LIM=[900,700,550],RNG=[[1800,3800],[1400,3200],[1000,2800]];
+function reset(){S={lv:{l1:0,l2:0,l3:0,b:0},ach:new Set(),rt:[],early:0,posterDone:false,photo:null};hud('')}
+const total=()=>Object.values(S.lv).reduce((a,b)=>a+b,0);
+function later(f,ms){const i=setTimeout(f,ms);TM.push(i);return i}
+function clearT(){TM.forEach(clearTimeout);TM=[];cancelAnimationFrame(raf);raf=0}
+function hud(l){$('#sc').textContent=total();if(l!==undefined)$('#lvl').textContent=l;const t=$('#te');if(t)t.style.width=Math.min(100,S.lv.b/9)+'%'}
+function add(k,n){S.lv[k]=Math.max(0,S.lv[k]+n);hud()}
+function go(fn){if(busy)return;busy=true;clearT();stage.classList.add('out');setTimeout(()=>{fn();stage.classList.remove('out');busy=false},RM?0:250)}
+function show(h){stage.innerHTML=h;scrollTo(0,0)}
+function tone(f,d,t='square',v=.06,w=0){if(mute)return;try{AC=AC||new AudioContext();const o=AC.createOscillator(),g=AC.createGain(),s=AC.currentTime+w;o.type=t;o.frequency.value=f;g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g).connect(AC.destination);o.start(s);o.stop(s+d)}catch(e){}}
+const seq=(a,d,t,v,gap)=>a.forEach((f,i)=>tone(f,d,t,v,i*gap));
+const sfx={click:()=>tone(440,.07),ok:()=>seq([523,659,784],.15,'triangle',.08,.09),no:()=>{tone(180,.25,'sawtooth');tone(130,.3,'sawtooth',.06,.1)},tick:()=>tone(660,.06,'sine'),go:()=>tone(880,.2),lvl:()=>seq([392,523,659,784],.18,'triangle',.08,.1),win:()=>seq([523,659,784,1047,784,1047,1319],.2,'triangle',.09,.12),lose:()=>seq([392,330,262,196],.3,'sawtooth',.06,.18),reveal:()=>{tone(110,.8,'sawtooth',.07);tone(220,.8,'triangle',.07,.3)}};
+$('#mu').onclick=e=>{mute=!mute;e.target.textContent=mute?'🔇':'🔊';e.target.setAttribute('aria-pressed',mute);if(!mute)sfx.click()};
+function shake(){if(RM)return;stage.classList.remove('shake');void stage.offsetWidth;stage.classList.add('shake')}
+/* background particles + confetti */
+const bg=$('#bg'),bx=bg.getContext('2d'),fx=$('#fx'),fc=fx.getContext('2d');let P=[],C=[],cOn=false;
+function size(){bg.width=fx.width=innerWidth;bg.height=fx.height=innerHeight}size();addEventListener('resize',size);
+for(let i=0;i<60;i++)P.push({x:Math.random(),y:Math.random(),r:Math.random()*2+.5,s:Math.random()*.0006+.0002});
+function bgLoop(){bx.clearRect(0,0,bg.width,bg.height);bx.fillStyle='rgba(245,197,66,.55)';for(const p of P){if(!RM){p.y-=p.s;if(p.y<0)p.y=1}bx.beginPath();bx.arc(p.x*bg.width,p.y*bg.height,p.r,0,7);bx.fill()}if(!RM)requestAnimationFrame(bgLoop)}bgLoop();
+function confetti(n=160){if(RM)return;for(let i=0;i<n;i++)C.push({x:innerWidth/2,y:innerHeight*.35,vx:(Math.random()-.5)*16,vy:-4-Math.random()*14,r:3+Math.random()*5,c:['#f5c542','#b3122a','#fff','#ff6b81'][i%4]});if(!cOn){cOn=true;fl()}}
+function fl(){fc.clearRect(0,0,fx.width,fx.height);C=C.filter(p=>p.y<fx.height+20);for(const p of C){p.vy+=.35;p.x+=p.vx;p.y+=p.vy;fc.fillStyle=p.c;fc.fillRect(p.x,p.y,p.r,p.r*1.6)}if(C.length)requestAnimationFrame(fl);else cOn=false}
+function avatar(){return CFG.photo?`<img src="${esc(CFG.photo)}" alt="Titus">`:'<svg viewBox="0 0 200 220" role="img" aria-label="Placeholder illustration of Titus"><circle cx="100" cy="110" r="96" fill="#1a0b0e" stroke="#f5c542" stroke-width="4"/><path d="M30 210c0-48 30-66 70-66s70 18 70 66z" fill="#b3122a"/><rect x="86" y="118" width="28" height="30" fill="#c98d5a"/><ellipse cx="100" cy="90" rx="40" ry="48" fill="#c98d5a"/><path d="M58 80c0-40 22-52 44-52s42 14 40 52c-8-20-24-26-42-26s-34 8-42 26z" fill="#120808"/><rect x="68" y="84" width="29" height="17" rx="5"/><rect x="103" y="84" width="29" height="17" rx="5"/><path d="M82 118q18 12 36 0" stroke="#7a3b22" stroke-width="4" fill="none" stroke-linecap="round"/></svg>'}
+/* ===== screens ===== */
+function menu(){cur='menu';hud('MENU');show(`<div class="c"><div class="av">${avatar()}</div><h1 class="rev">${esc(CFG.title)}</h1><h2>${esc(CFG.sub)}</h2><p class="tag">${esc(CFG.tag)}</p><p><span class="badge">🌍 #1 TRENDING IN ALL 195 COUNTRIES</span></p><p class="sm">Fans worldwide: <b id="fans">0</b></p><p><button class="btn big" data-a="play">PLAY GAME</button></p><p><button class="btn alt" data-a="how">HOW TO PLAY</button><button class="btn alt" data-a="credits">CREDITS</button></p></div>`);let i=0;(function f(){i++;const n=RM?50:i;$('#fans').textContent=Math.round(8e9*Math.min(1,n/50)).toLocaleString();if(n<50)later(f,40)})()}
+function how(){cur='how';show(`<div class="c"><h2>How to play</h2><div class="box"><p>Clear 3 levels and a final boss. Click, tap or use the keyboard (1-4 for answers, Space for reactions, Tab and Enter for buttons).</p><p>Points come from correct answers, fast reactions and a poster. Mistakes cost points. Your final rank is based on your total. Everything here is a fictional classroom joke.</p></div><button class="btn" data-a="menu2">BACK</button></div>`)}
+function credits(){cur='cr';show(`<div class="c"><h2>Credits</h2><div class="box"><p>${esc(CFG.credits)}</p></div><button class="btn" data-a="menu2">BACK</button></div>`)}
+function cutscene(){cur='cut';hud('INTRO');ci=0;line()}
+function line(){const[w,t]=CFG.intro[ci];show(`<div class="c"><div class="box"><b class="d">${esc(w)}</b><p id="tx" class="big" aria-live="polite"></p></div><button class="btn" data-a="nextline">NEXT</button></div>`);typ($('#tx'),t)}
+function typ(el,t){TY={el,t};if(RM){el.textContent=t;TY=null;return}let i=0;(function s(){el.textContent=t.slice(0,++i);if(i<t.length)later(s,28);else TY=null})()}
+function reveal(){cur='rev';sfx.reveal();show(`<div class="c"><div class="av">${avatar()}</div><h2 class="rev">${esc(CFG.mission)}</h2><button class="btn big" data-a="next" data-n="1">CONTINUE</button></div>`);shake()}
+function card(n){if(n===5)return results();cur='card';sfx.lvl();const c=CARDS[n];hud(c[0]);show(`<div class="c"><h2>${c[0]}</h2><h1 class="rev">${c[1]}</h1><p>${c[2]}</p><button class="btn big" data-a="start" data-n="${n}">START</button></div>`)}
+/* quiz engine (Level 1 + boss) */
+function quiz(list,o){Q={list,i:0,r:0,o,lock:false};qShow()}
+function qShow(){const q=Q.list[Q.i],o=Q.o;cur=o.cur;Q.lock=false;
+ show(`${o.top?o.top():''}<div class="bar"><i id="pb"></i></div><p class="sm">Question ${Q.i+1} of ${Q.list.length}</p>${o.timer?'<div class="bar"><i id="tb" style="width:100%;transition:none"></i></div>':''}<h2>${esc(q.q)}</h2><div class="opts">${q.a.map((a,i)=>`<button class="card" data-a="pick" data-i="${i}"><b>${'ABCD'[i]}.</b> ${esc(a)}</button>`).join('')}</div><div id="fb" role="status"></div>`);
+ later(()=>{$('#pb').style.width=Q.i/Q.list.length*100+'%'},30);
+ if(o.timer){Q.t0=performance.now();(function tk(){const f=1-(performance.now()-Q.t0)/(o.timer*1000),b=$('#tb');if(b)b.style.width=Math.max(0,f*100)+'%';if(f<=0)pick(-1);else later(tk,100)})()}}
+function pick(i){if(!Q||Q.lock)return;Q.lock=true;clearT();const q=Q.list[Q.i],o=Q.o,ok=i===q.c,last=Q.i+1===Q.list.length;
+ document.querySelectorAll('.card').forEach((b,k)=>{b.disabled=true;if(k===q.c)b.classList.add('ok');else if(k===i)b.classList.add('no')});
+ if(ok){Q.r++;add(o.key,o.pts);sfx.ok()}else{add(o.key,-o.pen);sfx.no();shake()}
+ $('#pb').style.width=(Q.i+1)/Q.list.length*100+'%';
+ $('#fb').innerHTML=`<div class="box"><b class="d">${i<0?"TIME'S UP!":ok?'CORRECT! +'+o.pts:'NOT QUITE.'+(o.pen?' -'+o.pen:'')}</b><p>${esc(q.e)}</p><button class="btn" data-a="qnext">${last?'CONTINUE':'NEXT QUESTION'}</button></div>`;$('#fb button').focus()}
+const L1=()=>quiz(CFG.quiz,{cur:'l1',key:'l1',pts:100,pen:25,done:r=>{if(r===CFG.quiz.length)S.ach.add('perfect');go(()=>card(2))}});
+/* Level 2 */
+function L2(){cur='l2';R={r:0,st:'idle'};S.rt=[];S.early=0;hud('LEVEL 2');show(`<h2>Survive the Teleserye</h2><p class="sm" id="rl"></p><div class="react" id="rz" data-p="react" tabindex="0" role="button" aria-live="polite"></div><p id="rm" class="big c"></p>`);round()}
+function paint(m,c){const z=$('#rz');z.textContent=m;z.className='react '+(c||'')}
+function round(){R.st='count';$('#rl').textContent=`Round ${R.r+1} of 3 (reaction window ${LIM[R.r]} ms)`;$('#rm').textContent='';let n=3;
+ (function st(){if(n>0){paint(n);sfx.tick();n--;later(st,700)}else{paint('WAIT FOR IT…');R.st='wait';const[a,b]=RNG[R.r];later(cue,a+Math.random()*(b-a))}})()}
+function cue(){R.st='cue';paint('DRAMATIC MOMENT!','go');sfx.go();shake();R.t0=performance.now();later(()=>{R.st='done';paint('TOO SLOW!','bad');$('#rm').textContent='The scene ended without you. +0';sfx.no();nextR()},LIM[R.r])}
+function react(){if(R.st==='wait'){clearT();R.st='done';S.early++;add('l2',-50);sfx.no();paint('TOO EARLY!','bad');$('#rm').textContent='The cue had not happened yet. -50';nextR()}
+ else if(R.st==='cue'){const ms=performance.now()-R.t0;clearT();R.st='done';const p=Math.max(50,Math.min(300,Math.round(400-ms*.6)));S.rt.push(ms);if(ms<300)S.ach.add('reflex');add('l2',p);sfx.ok();confetti(30);paint(Math.round(ms)+' ms','ok');$('#rm').textContent=(ms<250?'Oscar-worthy!':ms<450?'Solid acting!':'A bit dramatic... slowly.')+' +'+p;nextR()}}
+function nextR(){later(()=>{R.r++;if(R.r<3)round();else go(l2sum)},1800)}
+function l2sum(){cur='l2s';const a=S.rt.length?S.rt.reduce((x,y)=>x+y,0)/S.rt.length:0;if(!S.early&&S.rt.length===3)S.ach.add('clean');
+ show(`<div class="c"><h2>Level 2 complete</h2><div class="box"><p>Average reaction: <b>${S.rt.length?Math.round(a)+' ms':'no valid reactions'}</b></p><p>False starts: ${S.early}</p><p>Level score: ${S.lv.l2}</p><p>${a&&a<350?'Teleserye-ready reflexes!':'The drama needs more practice. Hollywood can wait.'}</p></div><button class="btn big" data-a="next" data-n="3">CONTINUE</button></div>`)}
+/* Level 3 poster */
+function L3(){cur='l3';hud('LEVEL 3');const p=CFG.poster;
+ show(`<h2>Build your teleserye poster</h2><div class="pg"><div class="box"><label>Movie title<input id="pt" maxlength="28" value="${esc(p.title)}"></label><label>Subtitle<input id="ps" maxlength="36" value="${esc(p.sub)}"></label><label>Tagline<input id="pg" maxlength="70" value="${esc(p.tag)}"></label><label>Theme<select id="pth">${THEMES.map((t,i)=>`<option value="${i}">${esc(t.n)}</option>`).join('')}</select></label><label>Character<select id="psl"><option value="0">Silhouette with sunglasses</option><option value="1">Silhouette with hat</option><option value="2">Plain silhouette</option></select></label><label>Authorized photo (optional)<input type="file" id="pf" accept="image/*"></label><button class="btn" data-a="gen">GENERATE POSTER</button><div id="fb" role="status"></div></div><canvas id="pc" width="600" height="900" aria-label="Poster preview"></canvas></div><div class="c"><button class="btn big" id="pn" data-a="next" data-n="4" disabled>CONTINUE</button></div>`);drawPoster()}
+function wrap(x,t,mw){let l='',o=[];for(const s of t.split(' ')){const n=l?l+' '+s:s;if(x.measureText(n).width>mw&&l){o.push(l);l=s}else l=n}o.push(l);return o}
+function drawPoster(){const cv=$('#pc');if(!cv)return;const x=cv.getContext('2d'),W=600,H=900,T=THEMES[+$('#pth').value];
+ const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,T.a);g.addColorStop(1,T.b);x.fillStyle=g;x.fillRect(0,0,W,H);
+ x.fillStyle=T.c;x.globalAlpha=.08;for(let i=0;i<10;i++){x.beginPath();x.moveTo(300,420);x.lineTo(i*70-60,0);x.lineTo(i*70,0);x.fill()}x.globalAlpha=1;
+ x.fillStyle='#050203';x.beginPath();x.ellipse(300,900,240,270,0,Math.PI,2*Math.PI);x.fill();x.beginPath();x.arc(300,470,105,0,7);x.fill();
+ const sl=$('#psl').value;
+ if(S.photo){const im=S.photo,s=Math.max(210/im.width,210/im.height);x.save();x.beginPath();x.arc(300,470,105,0,7);x.clip();x.drawImage(im,300-im.width*s/2,470-im.height*s/2,im.width*s,im.height*s);x.restore()}
+ else if(sl==='0'){x.fillStyle='#000';x.strokeStyle=T.c;x.lineWidth=3;x.fillRect(215,445,170,38);x.strokeRect(215,445,170,38)}
+ else if(sl==='1'){x.fillStyle='#1b0b0b';x.strokeStyle=T.c;x.lineWidth=3;x.beginPath();x.ellipse(300,395,150,24,0,0,7);x.fill();x.stroke();x.fillRect(230,320,140,75);x.strokeRect(230,320,140,75)}
+ x.strokeStyle=T.c;x.lineWidth=4;x.beginPath();x.arc(300,470,105,0,7);x.stroke();
+ x.textAlign='center';x.lineJoin='round';
+ let fs=76,t=($('#pt').value.trim()||'UNTITLED').toUpperCase(),ls;x.font=fs+'px Impact,sans-serif';ls=wrap(x,t,540);
+ if(ls.length>3){fs=52;x.font=fs+'px Impact,sans-serif';ls=wrap(x,t,540)}
+ let y=100;ls.forEach(l=>{x.lineWidth=7;x.strokeStyle='#000';x.strokeText(l,300,y);x.fillStyle=T.c;x.fillText(l,300,y);y+=fs*.95});
+ x.font='italic 28px Georgia';x.fillStyle='#fff';x.fillText($('#ps').value.trim(),300,y+8,540);
+ x.font='bold 26px Georgia';x.fillStyle=T.c;y=770;wrap(x,$('#pg').value.trim(),520).forEach(l=>{x.fillText(l,300,y);y+=32});
+ x.font='15px Georgia';x.fillStyle='#bbb';x.fillText('NOW SHOWING IN EVERY COUNTRY. HOLLYWOOD HAS NOT CONFIRMED ANYTHING.',300,880)}
+/* Final boss */
+const meters=()=>`<div class="mt"><span>COCO</span><div class="bar"><i style="width:70%"></i></div><span>TITUS</span><div class="bar"><i id="te" style="width:${Math.min(100,S.lv.b/9)}%"></i></div></div>`;
+function bossVs(){cur='bv';hud('FINAL BOSS');sfx.reveal();show(`<div class="c"><h2>Who has the ultimate main character energy?</h2><div class="vs"><div class="box"><h3>COCO MARTIN</h3><small>THE INSPIRATION</small></div><div class="vsb">VS</div><div class="box"><h3>TITUS CARDEÑO</h3><small>THE CLASSROOM LEGEND</small></div></div>${meters()}<p class="big">🌍 8 BILLION VIEWERS ARE WATCHING</p><button class="btn big" data-a="b1go">FIGHT!</button></div>`);shake()}
+const bossQuiz=()=>quiz(CFG.boss,{cur:'b1',key:'b',pts:150,pen:0,timer:10,top:meters,done:()=>go(b2intro)});
+function b2intro(){cur='b2i';show(meters()+`<div class="c"><h2>Challenge 2: dramatic entrance</h2><p>A marker sweeps across the bar. Click the bar or press Space when it is inside the gold zone. One try!</p><button class="btn big" data-a="b2go">START</button></div>`)}
+const mpos=()=>{const x=((performance.now()-M.t0)/800)%2;return x<1?x:2-x};
+function b2(){cur='b2';M={done:false,t0:performance.now()};show(meters()+`<h2 class="c">Make your entrance!</h2><div class="meter" data-p="stop" tabindex="0" role="button" aria-label="Stop the marker"><u></u><b id="mk"></b></div><div id="fb" role="status"></div>`);(function lp(){const m=$('#mk');if(m)m.style.left=mpos()*97+'%';raf=requestAnimationFrame(lp)})()}
+function stopM(){if(M.done)return;M.done=true;cancelAnimationFrame(raf);const d=Math.abs(mpos()-.5),p=d<.06?300:Math.max(0,Math.round(300-(d-.06)*700));add('b',p);p?sfx.ok():sfx.no();
+ $('#fb').innerHTML=`<div class="box c"><b class="d">${p>=250?'FLAWLESS ENTRANCE!':p>0?'DECENT DRAMA.':'TRIPPED ON THE ENTRANCE.'} +${p}</b><br><button class="btn" data-a="b3i">CONTINUE</button></div>`;$('#fb button').focus()}
+function b3intro(){cur='b3i';show(meters()+`<div class="c"><h2>Challenge 3: confidence charge</h2><p>Tap the big button (or press Space) as fast as you can for 5 seconds!</p><button class="btn big" data-a="b3go">START</button></div>`)}
+function b3(){cur='b3';H={n:0,on:false};show(meters()+`<h2 class="c" id="hh">GET READY…</h2><div class="bar"><i id="tb" style="width:100%;transition:none"></i></div><div class="react" id="en" data-p="hit" tabindex="0" role="button" aria-label="Charge energy">TAP!</div><p class="c">Taps: <b id="hn">0</b></p>`);
+ later(()=>{H.on=true;$('#hh').textContent='GO GO GO!';sfx.go();const b=$('#tb');void b.offsetWidth;b.style.transition='width 5s linear';b.style.width='0';later(()=>{H.on=false;const p=Math.min(300,H.n*10);add('b',p);if(H.n>=25)S.ach.add('surge');go(bossEnd)},5000)},800)}
+function hit(){if(!H||!H.on)return;H.n++;$('#hn').textContent=H.n;tone(300+H.n*8,.05)}
+function bossEnd(){cur='be';const pct=S.lv.b/9,win=pct>=60;show(meters()+`<div class="c" id="vd"><h2>THE VERDICT IS COMING…</h2></div>`);sfx.reveal();
+ later(()=>{if(win)S.ach.add('legend');const b=`<p>Final boss energy: <b>${Math.round(pct)}%</b></p><button class="btn alt" data-a="retryb">RETRY BOSS</button><button class="btn big" data-a="next" data-n="5">SEE RESULTS</button>`;
+ $('#vd').innerHTML=win?`<h1 class="rev">VERDICT: THE CLASSROOM HAS SPOKEN!</h1><p class="big">THE CONFIDENCE IS LEGENDARY. HOLLYWOOD HAS NOT CONFIRMED ANYTHING.</p><p>BREAKING: 195 countries react. Everyone knows.</p>${b}`:`<h1>VERDICT: ALMOST LEGENDARY</h1><p class="big">Coco Martin's energy wins this round. The classroom demands a rematch.</p>${b}`;
+ hud();if(win){sfx.win();confetti(220)}else sfx.lose();shake()},1800)}
+function results(){cur='res';hud('RESULTS');const t=total(),ri=RANKS.filter(r=>t>=r[0]).length-1,rk=RANKS[ri][1],L=S.lv,W=['The world shrugs, then Googles it.','A few countries are curious.','Whole continents are clapping.','Global celebrations in every time zone.','The entire planet declares a holiday.'];
+ show(`<div class="c"><h2>Final results</h2><h1 class="rev">${rk}</h1><p class="big">${t} points</p><p class="big">🌍 ${W[ri]}</p><div class="box"><p>Confidence Test: ${L.l1} | Teleserye: ${L.l2} | Poster: ${L.l3} | Final Boss: ${L.b}</p></div><div class="box"><h3>Achievements</h3><ul class="ach">${Object.entries(ACH).map(([k,v])=>`<li class="${S.ach.has(k)?'':'lock'}">${S.ach.has(k)?'🏆':'🔒'} <b>${v[0]}</b>: ${v[1]}</li>`).join('')}</ul></div><button class="btn big" data-a="restart">RESTART GAME</button></div>`);
+ if(t>=1100){sfx.win();confetti()}}
+/* ===== input ===== */
+const LV={1:L1,2:L2,3:L3,4:bossVs};
+const A={play(){reset();go(cutscene)},how(){go(how)},credits(){go(credits)},menu2(){go(menu)},restart(){reset();go(menu)},
+ nextline(){if(TY){clearT();TY.el.textContent=TY.t;TY=null;return}ci++;go(ci<CFG.intro.length?line:reveal)},
+ next(t){go(()=>card(+t.dataset.n))},start(t){go(LV[+t.dataset.n])},pick(t){pick(+t.dataset.i)},
+ qnext(){Q.i+1<Q.list.length?(Q.i++,go(qShow)):Q.o.done(Q.r)},
+ b1go(){go(bossQuiz)},b2go(){go(b2)},b3i(){go(b3intro)},b3go(){go(b3)},retryb(){S.lv.b=0;go(bossVs)},
+ gen(){drawPoster();const a=document.createElement('a');a.href=$('#pc').toDataURL('image/png');a.download='titus-poster.png';a.click();
+  if(!S.posterDone){S.posterDone=true;add('l3',100);S.ach.add('poster')}sfx.ok();confetti(60);$('#fb').textContent='Poster generated and saved! +100 (first time only)';$('#pn').disabled=false}};
+const PA={react:()=>cur==='l2'&&react(),stop:()=>cur==='b2'&&stopM(),hit:()=>cur==='b3'&&hit()};
+stage.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t||busy||t.disabled)return;sfx.click();A[t.dataset.a](t)});
+stage.addEventListener('pointerdown',e=>{const t=e.target.closest('[data-p]');if(t&&!busy)PA[t.dataset.p]()});
+stage.addEventListener('input',()=>{if(cur==='l3')drawPoster()});
+stage.addEventListener('change',e=>{if(e.target.id!=='pf')return;const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{S.photo=im;drawPoster()};im.src=r.result};r.readAsDataURL(f)});
+addEventListener('keydown',e=>{if(e.repeat||busy)return;const k=e.code,m={l2:'react',b2:'stop',b3:'hit'}[cur];
+ if(m&&(k==='Space'||k==='Enter')){e.preventDefault();PA[m]();return}
+ if((cur==='l1'||cur==='b1')&&/^Digit[1-4]$/.test(k))pick(+k[5]-1)});
+reset();menu();
+</script></body></html>
