@@ -55,7 +55,7 @@ input,select{width:100%;padding:8px;background:#0e0608;color:#fff;border:1px sol
 <header id="hud"><span>SCORE <b id="sc">0</b></span><span id="lvl"></span><button id="mu" aria-label="Toggle sound" aria-pressed="false">🔊</button></header>
 <main id="stage" tabindex="-1"></main>
 <script>
-/* ===== EDIT HERE: all jokes, questions and labels live in CFG (fictional classroom content only) ===== */
+/* ===== EDIT HERE: all dialogue, questions and labels live in CFG ===== */
 const CFG={
  title:'TITUS CARDEÑO',sub:'THE COCO MARTIN LEGEND',
  tag:'ONE CLASSMATE. ONE LEGENDARY CLAIM. INFINITE CONFIDENCE.',
@@ -65,23 +65,23 @@ const CFG={
   ['Titus','Alam mo, kamukha ko talaga si Coco Martin.'],['Narrator','And the entire planet gasped.']],
  mission:'YOUR MISSION: LIVE UP TO WORLDWIDE MAIN CHARACTER ENERGY.',
  quiz:[
-  {q:"What is Titus's most legendary classroom claim?",a:['He can finish all his homework in one second.','He looks like Coco Martin.','He is secretly a professional game developer.','He can pause time during exams.'],c:1,e:'Correct! The claim is the whole premise of this game.'},
-  {q:'How many countries know about the claim?',a:['Just our classroom','Every country, plus a few clouds','Only Antarctica','Zero. It is a secret.'],c:1,e:'In this parody, absolutely everyone knows. The pigeons too.'},
-  {q:'What is the key ingredient of the legendary claim?',a:['Math homework','Unshakeable confidence','A Wi-Fi password','Extra baon'],c:1,e:'Confidence! It is the only resource that never runs out.'},
-  {q:'Who has officially confirmed the resemblance?',a:['Hollywood','The United Nations','NASA','Nobody. It is a classroom joke.'],c:3,e:'Right. Nobody has confirmed anything. Yet.'},
-  {q:'What must the player prove to the whole world?',a:['Main character energy','They can nap through Math','They know every WiFi cafe','Nothing, just vibes'],c:0,e:'Main character energy. Stay focused, hero.'}],
+  {q:"What is Titus's most legendary claim, known to every person on Earth?",a:['He can finish all his homework in one second.','He looks like Coco Martin.','He is secretly a professional game developer.','He can pause time during exams.'],c:1,e:'Correct! The whole world knows the claim.'},
+  {q:'How many countries know about the claim?',a:['Just our classroom','Every country, plus a few clouds','Only Antarctica','Zero. It is a secret.'],c:1,e:'Everyone knows. The pigeons too.'},
+  {q:'What is the key ingredient of the legendary claim?',a:['Math homework','Unshakeable confidence','A Wi-Fi password','Extra baon'],c:1,e:'Confidence! Recognized in every language on Earth.'},
+  {q:'Who already knows about the claim?',a:['Only the classroom','Every person on Earth','Just the teachers','Nobody'],c:1,e:'Right. All 8 billion people. Hollywood has yet to comment.'},
+  {q:'What must the player prove to the whole world?',a:['Main character energy','They can nap through Math','They know every WiFi cafe','Nothing, just vibes'],c:0,e:'Main character energy. The world is watching. Stay focused, hero.'}],
  boss:[
-  {q:'Complete the legendary line: "Alam mo, kamukha ko talaga si ____."',a:['Coco Martin','Our teacher','The Wi-Fi router','Batman'],c:0,e:'Say it with full teleserye drama.'},
-  {q:'How many times has Hollywood confirmed the claim?',a:['Zero. Still unconfirmed.','One thousand','Twice, by phone','NASA confirmed it'],c:0,e:'Hollywood has not confirmed anything.'}],
- poster:{title:'The Kamukha Chronicles',sub:'A Classroom Legend Story',tag:'He says he looks like him. The class says: sige na nga.'},
- credits:'Game by YOUR NAME, Senior High School Computer Programming. Starring a very confident classmate. All characters, ranks and achievements are fictional and made for fun.'
+  {q:'Complete the legendary line the whole world repeats: "Alam mo, kamukha ko talaga si ____."',a:['Coco Martin','Our teacher','The Wi-Fi router','Batman'],c:0,e:'Say it so the whole world hears.'},
+  {q:'How many times has Hollywood confirmed the claim?',a:['Zero. Still unconfirmed.','One thousand','Twice, by phone','NASA confirmed it'],c:3,e:'NASA confirmed it, live from space.'}],
+ poster:{title:'The Kamukha Chronicles',sub:'The Whole World Knows',tag:'He says he looks like him. Eight billion people say: sige na nga.'},
+ credits:'Game by YOUR NAME, Senior High School Computer Programming. Starring the man the whole world knows.'
 };
 const THEMES=[{n:'The Action Hero',a:'#3a0a0a',b:'#000',c:'#f5c542'},{n:'The Heartbreak King',a:'#4a1030',b:'#0d0310',c:'#ff8fa3'},{n:'The Classroom Legend',a:'#10304a',b:'#050a14',c:'#f5c542'},{n:'The Ultimate Coco Martin Impersonator',a:'#5a3a05',b:'#0a0503',c:'#ffe08a'}];
 const RANKS=[[0,'Rookie Extra'],[600,'Rising Star'],[1100,'Teleserye Specialist'],[1600,'Main Character'],[1900,'Coco Martin-Level Confidence']];
 const ACH={perfect:['Perfect Quiz','Every Level 1 answer correct'],reflex:['Lightning Reflexes','A reaction under 300 ms'],clean:['No False Starts','Zero early clicks in Level 2'],poster:['Poster Director','Generated your poster'],surge:['Energy Surge','25+ taps in the Confidence Charge'],legend:['Classroom Legend','Won the final challenge']};
-const CARDS={1:['LEVEL 1','The Confidence Test','Answer 5 questions. +100 per correct answer, -25 per wrong one. Keys 1-4 also work.'],
+const CARDS={1:['LEVEL 1','The Confidence Test','Answer 5 questions as the whole world watches. +100 per correct answer, -25 per wrong one. Keys 1-4 also work.'],
  2:['LEVEL 2','Survive the Teleserye','Wait for DRAMATIC MOMENT! then click or press Space. Too early costs -50. Faster means more points. Three rounds, shrinking time window.'],
- 3:['LEVEL 3','Build Your Own Teleserye Poster','Design your own teleserye poster. Generate it for +100 and download the image.'],
+ 3:['LEVEL 3','Build Your Own Teleserye Poster','Design your own teleserye poster. It premieres in every country on Earth. Generate it for +100 and download the image.'],
  4:['FINAL BOSS','The Ultimate Coco Martin Challenge','Three challenges: a timed quiz, a dramatic entrance, and a confidence charge.']};
 /* ===== engine ===== */
 const $=s=>document.querySelector(s),stage=$('#stage');
@@ -112,7 +112,7 @@ function fl(){fc.clearRect(0,0,fx.width,fx.height);C=C.filter(p=>p.y<fx.height+2
 function avatar(){return CFG.photo?`<img src="${esc(CFG.photo)}" alt="Titus">`:'<svg viewBox="0 0 200 220" role="img" aria-label="Placeholder illustration of Titus"><circle cx="100" cy="110" r="96" fill="#1a0b0e" stroke="#f5c542" stroke-width="4"/><path d="M30 210c0-48 30-66 70-66s70 18 70 66z" fill="#b3122a"/><rect x="86" y="118" width="28" height="30" fill="#c98d5a"/><ellipse cx="100" cy="90" rx="40" ry="48" fill="#c98d5a"/><path d="M58 80c0-40 22-52 44-52s42 14 40 52c-8-20-24-26-42-26s-34 8-42 26z" fill="#120808"/><rect x="68" y="84" width="29" height="17" rx="5"/><rect x="103" y="84" width="29" height="17" rx="5"/><path d="M82 118q18 12 36 0" stroke="#7a3b22" stroke-width="4" fill="none" stroke-linecap="round"/></svg>'}
 /* ===== screens ===== */
 function menu(){cur='menu';hud('MENU');show(`<div class="c"><div class="av">${avatar()}</div><h1 class="rev">${esc(CFG.title)}</h1><h2>${esc(CFG.sub)}</h2><p class="tag">${esc(CFG.tag)}</p><p><span class="badge">🌍 #1 TRENDING IN ALL 195 COUNTRIES</span></p><p class="sm">Fans worldwide: <b id="fans">0</b></p><p><button class="btn big" data-a="play">PLAY GAME</button></p><p><button class="btn alt" data-a="how">HOW TO PLAY</button><button class="btn alt" data-a="credits">CREDITS</button></p></div>`);let i=0;(function f(){i++;const n=RM?50:i;$('#fans').textContent=Math.round(8e9*Math.min(1,n/50)).toLocaleString();if(n<50)later(f,40)})()}
-function how(){cur='how';show(`<div class="c"><h2>How to play</h2><div class="box"><p>Clear 3 levels and a final boss. Click, tap or use the keyboard (1-4 for answers, Space for reactions, Tab and Enter for buttons).</p><p>Points come from correct answers, fast reactions and a poster. Mistakes cost points. Your final rank is based on your total. Everything here is a fictional classroom joke.</p></div><button class="btn" data-a="menu2">BACK</button></div>`)}
+function how(){cur='how';show(`<div class="c"><h2>How to play</h2><div class="box"><p>Clear 3 levels and a final boss. Click, tap or use the keyboard (1-4 for answers, Space for reactions, Tab and Enter for buttons).</p><p>Points come from correct answers, fast reactions and a poster. Mistakes cost points. Your final rank is based on your total, and the whole world is watching.</p></div><button class="btn" data-a="menu2">BACK</button></div>`)}
 function credits(){cur='cr';show(`<div class="c"><h2>Credits</h2><div class="box"><p>${esc(CFG.credits)}</p></div><button class="btn" data-a="menu2">BACK</button></div>`)}
 function cutscene(){cur='cut';hud('INTRO');ci=0;line()}
 function line(){const[w,t]=CFG.intro[ci];show(`<div class="c"><div class="box"><b class="d">${esc(w)}</b><p id="tx" class="big" aria-live="polite"></p></div><button class="btn" data-a="nextline">NEXT</button></div>`);typ($('#tx'),t)}
@@ -134,14 +134,14 @@ const L1=()=>quiz(CFG.quiz,{cur:'l1',key:'l1',pts:100,pen:25,done:r=>{if(r===CFG
 /* Level 2 */
 function L2(){cur='l2';R={r:0,st:'idle'};S.rt=[];S.early=0;hud('LEVEL 2');show(`<h2>Survive the Teleserye</h2><p class="sm" id="rl"></p><div class="react" id="rz" data-p="react" tabindex="0" role="button" aria-live="polite"></div><p id="rm" class="big c"></p>`);round()}
 function paint(m,c){const z=$('#rz');z.textContent=m;z.className='react '+(c||'')}
-function round(){R.st='count';$('#rl').textContent=`Round ${R.r+1} of 3 (reaction window ${LIM[R.r]} ms)`;$('#rm').textContent='';let n=3;
+function round(){R.st='count';$('#rl').textContent=`Round ${R.r+1} of 3 (reaction window ${LIM[R.r]} ms). Broadcasting live to 8 billion viewers.`;$('#rm').textContent='';let n=3;
  (function st(){if(n>0){paint(n);sfx.tick();n--;later(st,700)}else{paint('WAIT FOR IT…');R.st='wait';const[a,b]=RNG[R.r];later(cue,a+Math.random()*(b-a))}})()}
 function cue(){R.st='cue';paint('DRAMATIC MOMENT!','go');sfx.go();shake();R.t0=performance.now();later(()=>{R.st='done';paint('TOO SLOW!','bad');$('#rm').textContent='The scene ended without you. +0';sfx.no();nextR()},LIM[R.r])}
 function react(){if(R.st==='wait'){clearT();R.st='done';S.early++;add('l2',-50);sfx.no();paint('TOO EARLY!','bad');$('#rm').textContent='The cue had not happened yet. -50';nextR()}
- else if(R.st==='cue'){const ms=performance.now()-R.t0;clearT();R.st='done';const p=Math.max(50,Math.min(300,Math.round(400-ms*.6)));S.rt.push(ms);if(ms<300)S.ach.add('reflex');add('l2',p);sfx.ok();confetti(30);paint(Math.round(ms)+' ms','ok');$('#rm').textContent=(ms<250?'Oscar-worthy!':ms<450?'Solid acting!':'A bit dramatic... slowly.')+' +'+p;nextR()}}
+ else if(R.st==='cue'){const ms=performance.now()-R.t0;clearT();R.st='done';const p=Math.max(50,Math.min(300,Math.round(400-ms*.6)));S.rt.push(ms);if(ms<300)S.ach.add('reflex');add('l2',p);sfx.ok();confetti(30);paint(Math.round(ms)+' ms','ok');$('#rm').textContent=(ms<250?'Oscar-worthy! Billions gasp.':ms<450?'Solid acting!':'A bit dramatic... slowly.')+' +'+p;nextR()}}
 function nextR(){later(()=>{R.r++;if(R.r<3)round();else go(l2sum)},1800)}
 function l2sum(){cur='l2s';const a=S.rt.length?S.rt.reduce((x,y)=>x+y,0)/S.rt.length:0;if(!S.early&&S.rt.length===3)S.ach.add('clean');
- show(`<div class="c"><h2>Level 2 complete</h2><div class="box"><p>Average reaction: <b>${S.rt.length?Math.round(a)+' ms':'no valid reactions'}</b></p><p>False starts: ${S.early}</p><p>Level score: ${S.lv.l2}</p><p>${a&&a<350?'Teleserye-ready reflexes!':'The drama needs more practice. Hollywood can wait.'}</p></div><button class="btn big" data-a="next" data-n="3">CONTINUE</button></div>`)}
+ show(`<div class="c"><h2>Level 2 complete</h2><div class="box"><p>Average reaction: <b>${S.rt.length?Math.round(a)+' ms':'no valid reactions'}</b></p><p>False starts: ${S.early}</p><p>Level score: ${S.lv.l2}</p><p>${a&&a<350?'Teleserye-ready reflexes! The world applauds.':'The drama needs more practice. The world is waiting.'}</p></div><button class="btn big" data-a="next" data-n="3">CONTINUE</button></div>`)}
 /* Level 3 poster */
 function L3(){cur='l3';hud('LEVEL 3');const p=CFG.poster;
  show(`<h2>Build your teleserye poster</h2><div class="pg"><div class="box"><label>Movie title<input id="pt" maxlength="28" value="${esc(p.title)}"></label><label>Subtitle<input id="ps" maxlength="36" value="${esc(p.sub)}"></label><label>Tagline<input id="pg" maxlength="70" value="${esc(p.tag)}"></label><label>Theme<select id="pth">${THEMES.map((t,i)=>`<option value="${i}">${esc(t.n)}</option>`).join('')}</select></label><label>Character<select id="psl"><option value="0">Silhouette with sunglasses</option><option value="1">Silhouette with hat</option><option value="2">Plain silhouette</option></select></label><label>Authorized photo (optional)<input type="file" id="pf" accept="image/*"></label><button class="btn" data-a="gen">GENERATE POSTER</button><div id="fb" role="status"></div></div><canvas id="pc" width="600" height="900" aria-label="Poster preview"></canvas></div><div class="c"><button class="btn big" id="pn" data-a="next" data-n="4" disabled>CONTINUE</button></div>`);drawPoster()}
@@ -190,7 +190,7 @@ const A={play(){reset();go(cutscene)},how(){go(how)},credits(){go(credits)},menu
  qnext(){Q.i+1<Q.list.length?(Q.i++,go(qShow)):Q.o.done(Q.r)},
  b1go(){go(bossQuiz)},b2go(){go(b2)},b3i(){go(b3intro)},b3go(){go(b3)},retryb(){S.lv.b=0;go(bossVs)},
  gen(){drawPoster();const a=document.createElement('a');a.href=$('#pc').toDataURL('image/png');a.download='titus-poster.png';a.click();
-  if(!S.posterDone){S.posterDone=true;add('l3',100);S.ach.add('poster')}sfx.ok();confetti(60);$('#fb').textContent='Poster generated and saved! +100 (first time only)';$('#pn').disabled=false}};
+  if(!S.posterDone){S.posterDone=true;add('l3',100);S.ach.add('poster')}sfx.ok();confetti(60);$('#fb').textContent='Poster generated and now showing in every country! +100 (first time only)';$('#pn').disabled=false}};
 const PA={react:()=>cur==='l2'&&react(),stop:()=>cur==='b2'&&stopM(),hit:()=>cur==='b3'&&hit()};
 stage.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t||busy||t.disabled)return;sfx.click();A[t.dataset.a](t)});
 stage.addEventListener('pointerdown',e=>{const t=e.target.closest('[data-p]');if(t&&!busy)PA[t.dataset.p]()});
